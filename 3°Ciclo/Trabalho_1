@@ -1,0 +1,49 @@
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+
+// import org.junit.jupiter.api.Test;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite a quantidade de alunos: ");
+        int tamanho = scanner.nextInt();
+
+        // Criar vetores para armazenar os nomes e as notas
+        String[] nomes = new String[tamanho];
+        double[][] notas = new double[tamanho][2];
+
+        // Solicitar os dados dos alunos
+        for (int i = 0; i < tamanho; i++) {
+          
+            scanner.nextLine();  // Limpar o buffer
+            System.out.println();
+            System.out.print("Digite o nome do " + (i + 1) + "º aluno: ");
+            nomes[i] = scanner.nextLine();
+
+            System.out.print("Digite a 1ª nota de " + nomes[i] + ": ");
+            notas[i][0] = scanner.nextDouble();
+
+            System.out.print("Digite a 2ª nota de " + nomes[i] + ": ");
+            notas[i][1] = scanner.nextDouble();
+        }
+
+        double somaNotas = 0;
+
+        // Resultados
+        for (int i = 0; i < tamanho; i++) {
+            double media = (notas[i][0] + notas[i][1]) / 2;
+            System.out.println("Aluno: " + nomes[i] + " - Média: " + media);
+            somaNotas += (notas[i][0] + notas[i][1]);
+        }
+
+        // Média geral
+        double mediaGeral = somaNotas / (tamanho * 2);
+        System.out.println("\nMédia geral das notas: " + mediaGeral);
+
+        scanner.close();
+    }
+}
