@@ -56,15 +56,15 @@ public class Main {
                 break;
 
             case 4: //Saindo do sistema 
-                scanner.close();
+                scanner.close(); //fecha o scanner 
                 System.out.println("Programa encerrado.");
-                return;
+                return; // saí da função main - Encerra o programa 
             default: //Caso seja digitado um número inválido
                 System.out.println("Opção inválida!");
                 break;
             }
 
-            // Show menu again after each operation
+            // Mostrar o meu depois de escolher uma das opções 
             System.out.println();
             Menu();
         }
