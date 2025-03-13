@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Stack;
+/*Simulando uma fila de atendimento bancário. Crie um programa usando filas que emule o atendimento de um banco. O Programa deve permitir adicionar clientes à  fila, atender clientes e exibir o tamanho da fila atual.
+Menu de exemplo:
+ ------------------------------------------
+|   MENU                                  |
+|   1 - Inserir na fila                   |
+|   2 - Atender                           |
+|   3 - Mostrar tamanho da fila           |
+|   4 - Sair do programa                  |
+ ------------------------------------------
+Verificação se uma string é um palíndromo usando pilhas. Crie um programa que use uma pilha para verificar se uma palavra é um palíndromo (lê-se igual de trás pra frente). */
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("MENU");
+        System.out.println("1 - Inserir na fila");
+        System.out.println("2 - Atender");
+        System.out.println("3 - Mostrar tamanho da fila");
+        System.out.println("4 - Sair do programa");
+        System.out.println();
+        System.out.println("Escolha uma das opções: ");
+        Scanner scanner = new Scanner(System.in);
+        int escolha = scanner.nextInt();
+        
+            if(escolha > 0 && escolha < 5) {
+            System.out.print("Digite um valor válido: ");
+            escolha = scanner.nextInt();
+        }
+
+
+
+        if (escolha == 1) {
+            escolha++;
+        }
+
+    }
+}
