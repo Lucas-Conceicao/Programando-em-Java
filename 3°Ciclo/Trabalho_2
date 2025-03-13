@@ -1,39 +1,83 @@
 import java.util.Scanner;
-import java.util.Stack;
-/*Simulando uma fila de atendimento bancário. Crie um programa usando filas que emule o atendimento de um banco. O Programa deve permitir adicionar clientes à  fila, atender clientes e exibir o tamanho da fila atual.
-Menu de exemplo:
- ------------------------------------------
-|   MENU                                  |
-|   1 - Inserir na fila                   |
-|   2 - Atender                           |
-|   3 - Mostrar tamanho da fila           |
-|   4 - Sair do programa                  |
- ------------------------------------------
-Verificação se uma string é um palíndromo usando pilhas. Crie um programa que use uma pilha para verificar se uma palavra é um palíndromo (lê-se igual de trás pra frente). */
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        // Chama o menu
+        Menu();
+
+        Queue<String> fila = new LinkedList<>();
+        Random random = new Random();
+        int quant = 0;
+
+        for(;;) { //Laço de repetição infinito
+            int escolha = scanner.nextInt();
+
+            switch(escolha) { 
+                case 1: //Adicionando clientes à fila
+                    System.out.print("Adicionado cliente à fila: ");
+                    try {
+                        Thread.sleep(random.nextInt(2000) + 1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    quant++;
+                    fila.offer("Cliente " + quant);
+                    System.out.println("Cliente " + quant + " entrou na fila.");
+                break;
+
+             case 2: //Atendendo clientes da fila (removendo da fila))
+                    System.out.println("Atendendo Cliente: ");
+                    if (fila.isEmpty()) {
+                        System.out.println("Não há clientes para atender na fila.");
+                    } else {
+                        try {
+                            Thread.sleep(random.nextInt(2000) + 1000); 
+                        }
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        String cliente = fila.poll();
+                        System.out.println(cliente + " foi atendido.");
+                    }
+                break;
+
+            case 3: //Mostrando o tamanho da fila 
+                if(fila.isEmpty()) {
+                     System.out.println("Não há clientes na fila.");
+                }
+                else{
+                    System.out.println("Há " + fila.size() + " clientes na fila.");
+                }
+                break;
+
+            case 4: //Saindo do sistema 
+                scanner.close();
+                System.out.println("Programa encerrado.");
+                return;
+            default: //Caso seja digitado um número inválido
+                System.out.println("Opção inválida!");
+                break;
+            }
+
+            // Show menu again after each operation
+            System.out.println();
+            Menu();
+        }
+    }
+
+    // metodo Menu
+    private static void Menu() {
         System.out.println("MENU");
         System.out.println("1 - Inserir na fila");
         System.out.println("2 - Atender");
         System.out.println("3 - Mostrar tamanho da fila");
         System.out.println("4 - Sair do programa");
         System.out.println();
-        System.out.println("Escolha uma das opções: ");
-        Scanner scanner = new Scanner(System.in);
-        int escolha = scanner.nextInt();
-        
-            if(escolha > 0 && escolha < 5) {
-            System.out.print("Digite um valor válido: ");
-            escolha = scanner.nextInt();
-        }
-
-
-
-        if (escolha == 1) {
-            escolha++;
-        }
-
+        System.out.print("Escolha uma das opções: ");
     }
 }
