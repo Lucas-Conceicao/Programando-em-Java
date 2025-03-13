@@ -1,3 +1,14 @@
+/*Simulando uma fila de atendimento bancário. Crie um programa usando filas que emule o atendimento de um banco. 
+O Programa deve permitir adicionar clientes à  fila, atender clientes e exibir o tamanho da fila atual.
+Menu de exemplo:
+------------------------------------------
+|   MENU                                 |
+|   1 - Inserir na fila                  |
+|   2 - Atender                          |
+|   3 - Mostrar tamanho da fila          |
+|   4 - Sair do programa                 |
+------------------------------------------ */
+
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.Queue;
