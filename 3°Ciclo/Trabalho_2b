@@ -1,5 +1,6 @@
 /*Verificação se uma string é um palíndromo usando pilhas. 
-Crie um programa que use uma pilha para verificar se uma palavra é um palíndromo (lê-se igual de trás pra frente). */
+Crie um programa que use uma pilha para verificar se uma palavra é um palíndromo 
+(lê-se igual de trás pra frente). */
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -11,7 +12,7 @@ public class Main {
         System.out.println("Verificação de palídromo");
         System.out.print("Digie uma palavra: ");
         Scanner scanner = new Scanner(System.in); // Colocando o Scanner 
-        String texto = scanner.nextLine();
+        String texto = scanner.nextLine().toLowerCase().replaceAll("\\s+", ""); // toLowerCase para converter para minúsculo - replaceAll("\\s+", "") para remover espaços em branco
 
         for(int i = 0; i < texto.length(); i++){
             pilha.push(texto.charAt(i));
@@ -24,11 +25,10 @@ public class Main {
         }
 
         if(textoinvertido.equals(texto))
-            System.out.println(texto +" É um palíndromo");
+            System.out.println("É um palíndromo");
         else     
-            System.out.println(texto +" Não é um palíndromo");
+            System.out.println("Não é um palíndromo");
 
         scanner.close();
-    }
-    
+    } 
 }
