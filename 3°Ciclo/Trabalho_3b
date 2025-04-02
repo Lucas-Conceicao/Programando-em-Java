@@ -1,1 +1,91 @@
+import java.util.Scanner;
 
+class Paciente{
+  int senha = 0;
+  String nome;
+  Paciente proximo;
+
+  public Paciente(int senha, Sting nome){
+    this.senha = senha;
+    this.nome = nome;
+    this.proximo = null;
+  }
+}
+
+class ControlePacientes{
+  Paciente primeiro;
+  Paciente ultimo;
+
+  public void adicionarPaciente(int senha, Sting nome){
+    Paciente novopaciente = new Paciente(senha, nome);
+    if(primeiro == null){
+      primeiro = novopaciente;
+      ultimo = novopaciente;
+    } else{
+      ultimo.proximo = novopaciente;
+      ultimo = novopaciente;
+    }  
+  System.out.println("Paciente adicionado!");
+  }
+
+  public void chamarProximo(){
+    
+    if(primeiro == null){
+      System.out.println("Não há pacientes para chamar!");
+    } else{
+        Paciente proximopaciente = new Paciente(id, nome);
+        proximopaciente = primeiro.proximo;
+        if(proximopaciente == ultimo){
+          proximopaciente = primeiro;
+        }
+        System.out.println("Chamando " + proximopaciente.nome + proximopaciente.semha);
+    }
+  }
+
+  public void chamarAnterior(){
+  }
+
+}
+public class ListaPacientes{
+    public static void main(String[] args) {
+        ControlePacientes controle = new ControlePacientes();
+        int escolha;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("1 - Adicionar paciente");
+            System.out.println("2 - Chamar próximo paciente");
+            System.out.println("3 - Chamar paciente anterior");
+            System.out.println("4 - Sair do programa");
+            System.out.println("Escolha uma das opções: ");
+            escolha = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolha) {
+                case 1:
+                    int senha++;
+                    System.out.println("Digite o nome do paciente:");
+                    String nome = scanner.nextLine();
+                    System.out.println("A senha de " + nome + " e: " + senha);
+                    adicionarPaciente(senha,nome);
+                break;
+
+                case 2:
+                    chamarProximo();
+                break;
+
+                case 3:
+                    chamarAnterior();
+                break;
+
+                case 4:
+                    System.out.println("Encerrando o programa...");
+                break;
+
+                default:
+                    System.out.println("Digite um valor valido");
+                break;
+            }
+        } while (escolha != 4);
+    }
+}
