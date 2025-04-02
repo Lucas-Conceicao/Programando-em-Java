@@ -1,0 +1,105 @@
+/*1 - Lista simples
+Utilizando lista encadeada simples, criar um controle de chamados de TI.
+Cada chamado deve conter um 'id' e uma 'descricao'.
+O sistema deve conter os métodos:
+adicionarChamado(int id, String descricao)
+removerChamado() /remove o chamado mais antigo
+listarChamados() Exibe todos os chamados*/
+import java.util.Scanner;
+class Chamado {
+    int id;
+    String descricao;
+    Chamado proximo;
+
+    public Chamado(int id, String descricao) {
+        this.descricao = descricao;
+        this.id = id;
+        this.proximo = null;
+    }
+}
+
+class ControleChamados {
+    Chamado primeiro;
+    Chamado ultimo;
+
+    public void adicionarChamado(int id, String descricao) {
+        Chamado novoChamado = new Chamado(id, descricao);
+        if (primeiro == null) {
+            primeiro = novoChamado;
+            ultimo = novoChamado;
+        }else {
+            ultimo.proximo = novoChamado;
+            ultimo = novoChamado;
+        }
+        System.out.println("Chamado adicionado! ");
+    }
+
+    public void removerChamado() {
+        if (primeiro == null) {
+            System.out.println("Não há chamados para remover! ");
+            return;
+        } else {
+            System.out.println("O chamado" + primeiro + "foi removido");
+            primeiro = primeiro.proximo;
+        }
+    }
+
+    public void listarChamados() {
+        if (primeiro == null) {
+            System.out.println("Não há chamados para remover! ");
+            return;
+        } else {
+            Chamado chamadoAtual = primeiro;
+            System.out.println("Chamados de TI:");
+            while (chamadoAtual != null) {
+                System.out.println("ID: " + chamadoAtual.id + ", Descrição: " + chamadoAtual.descricao);
+                chamadoAtual = chamadoAtual.proximo; // Avança para o próximo chamado
+            }
+        }
+    }
+}
+
+public class ListaChamados {
+    public static void main(String[] args) {
+        ControleChamados controle = new ControleChamados();
+        int escolha;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("1 - Adicionar chamado");
+            System.out.println("2 - Listar chamados");
+            System.out.println("3 - Excluir chamado");
+            System.out.println("4 - Sair do programa");
+            System.out.println("Escolha uma das opções: ");
+            escolha = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolha) {
+                case 1:
+                    System.out.println("Insira o ID do chamado; ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Digite a descrição do chamado:");
+                    String descricao = scanner.nextLine();
+                    controle.adicionarChamado(id, descricao);
+                break;
+
+                case 2:
+                    controle.listarChamados();
+                break;
+
+                case 3:
+                    controle.removerChamado();
+                break;
+
+                case 4:
+                    System.out.println("Encerrando o programa...");
+                break;
+
+                default:
+                    System.out.println("Digite um valor valido");
+                break;
+            }
+        } while (escolha != 4);
+    }
+}
