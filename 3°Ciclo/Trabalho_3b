@@ -35,14 +35,25 @@ class ControlePacientes{
     } else{
         Paciente proximopaciente = new Paciente(id, nome);
         proximopaciente = primeiro.proximo;
-        if(proximopaciente == ultimo){
-          proximopaciente = primeiro;
-        }
-        System.out.println("Chamando " + proximopaciente.nome + proximopaciente.semha);
+        ultimo.proximo = primeiro;
+        ultimo = ultimo.proximo;
+        prrimeiro = proximopaciente;
+        System.out.println("Chamando " + primeiro.nome + primeiro.semha);
     }
   }
 
   public void chamarAnterior(){
+       if(primeiro == null){
+      System.out.println("Não há pacientes para chamar!");
+    } else{
+        Paciente anterirorpaciente = new Paciente(id, nome);
+        anterirorpaciente = ultimo;
+        ultimo.proximo = primeiro;
+        ultimo = ultimo.proximo;
+        prrimeiro = proximopaciente;
+        System.out.println("Chamando " + primeiro.nome + primeiro.semha);
+    }
+  }
   }
 
 }
