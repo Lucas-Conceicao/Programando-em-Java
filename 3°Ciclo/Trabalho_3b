@@ -14,71 +14,94 @@ chamarAnterior()
 
 ListarFila()*/
 
+/*2- Lista Circular e duplamente encadeada:
+
+Uma clinina medica atende pacientes por ordem de chegada, mas depois de atender o ultimo paciente, volta ao inicio da fila caso hava necessidade de atendimento continuo. É possível voltar e ir entre as senhas navegadas.
+
+Cada paciente deve ter um código e um nome.
+
+O sistema deve conter os métodos:
+
+adicionarPaciente(int senha, String nome)
+
+chamarProximo()
+
+chamarAnterior()
+
+ListarFila()*/
+
 import java.util.Scanner;
 
 class Paciente{
-  int senha;
-  String nome;
-  Paciente proximo;
-  Paciente anterior;
+    int senha;
+    String nome;
+    Paciente proximo;
+    Paciente anterior;
 
-  public Paciente(int senha, String nome){
-    this.senha = senha;
-    this.nome = nome;
-    this.proximo = null;
-    this.anterior = null;
-  }
+    public Paciente(int senha, String nome){
+        this.senha = senha;
+        this.nome = nome;
+        this.proximo = null;
+        this.anterior = null;
+    }
 }
 
 class ControlePacientes{
-  Paciente primeiro;
-  Paciente ultimo;
+    Paciente primeiro;
+    Paciente ultimo;
+    Paciente atual;
 
     public void adicionarPaciente(int senha, String nome){
         Paciente novoPaciente = new Paciente(senha, nome);
         if(primeiro == null){
             primeiro = novoPaciente;
             ultimo = novoPaciente;
-            novoPaciente.proximo = primeiro; // Cria um loop circular
-            novoPaciente.anterior = ultimo;
+            novoPaciente.proximo = novoPaciente;
+            novoPaciente.anterior = novoPaciente;
+            atual = novoPaciente;
         } else{
-            ultimo.proximo = novoPaciente; // Adiciona o novo paciente no final da fila
-            novoPaciente.anterior = ultimo; // Atualiza o anterior do novo paciente
-            novoPaciente.proximo = primeiro; // Cria um loop circular
-            primeiro.anterior = novoPaciente; // Atualiza o anterior do primeiro paciente
-            ultimo = novoPaciente; // Atualiza o ultimo paciente
-        }  
+            novoPaciente.proximo = primeiro;
+            novoPaciente.anterior = ultimo;
+            ultimo.proximo = novoPaciente;
+            primeiro.anterior = novoPaciente;
+            ultimo = novoPaciente;
+        }
         System.out.println("Paciente adicionado!");
     }
 
     public void chamarProximo() {
         if (primeiro == null) {
             System.out.println("Não há pacientes para chamar!");
+            return;
         } else {
-            System.out.println("Chamando " + primeiro.nome + " - Senha: " + primeiro.senha);
-            if (primeiro == ultimo) {
-                primeiro = null;
-                ultimo = null; // finalizando a fila quando não há mais pacientes
-            } else {
-                primeiro = primeiro.proximo;
-                ultimo.proximo = primeiro;
-                primeiro.anterior = ultimo;
-            }
+            atual = atual.proximo;
+            System.out.println("chamando: " + atual.nome +" - senha: " + atual.senha);
         }
     }
 
-  public void chamarAnterior(){
-       if(primeiro == null){
-      System.out.println("Não há pacientes para chamar!");
-    } else{
-        System.out.println("Chamando " + ultimo.nome + ultimo.senha);
-        if(primeiro == ultimo)
+    public void chamarAnterior(){
+        if (primeiro == null) {
             System.out.println("Não há pacientes para chamar!");
-        else{
-            primeiro.anterior = ultimo;
-        }      
+            return;
+        } else {
+            atual = atual.anterior;
+            System.out.println("chamando: " + atual.nome +" - senha: " + atual.senha);
+        }
     }
-  }
+    public void listarFila(){
+        if (primeiro == null) {
+            System.out.println("Não há fila de espera!");
+            return;
+        } else{
+            Paciente temp = primeiro;
+            System.out.println("Listando pacientes: ");
+            do{
+                System.out.println("Nome: " + temp.nome + " - Senha: " + temp.senha);
+                temp = temp.proximo;
+            }while(temp != primeiro);
+        }
+
+    }
 }
 
 public class Main{
@@ -92,7 +115,8 @@ public class Main{
             System.out.println("1 - Adicionar paciente");
             System.out.println("2 - Chamar próximo paciente");
             System.out.println("3 - Chamar paciente anterior");
-            System.out.println("4 - Sair do programa");
+            System.out.println("4 - listar fila");
+            System.out.println("5 - Sair do programa");
             System.out.println("Escolha uma das opções: ");
             escolha = scanner.nextInt();
             scanner.nextLine();
@@ -104,24 +128,28 @@ public class Main{
                     String nome = scanner.nextLine();
                     System.out.println("A senha de " + nome + " e: " + novasenha);
                     controle.adicionarPaciente(novasenha,nome);
-                break;
+                    break;
 
                 case 2:
                     controle.chamarProximo();
-                break;
+                    break;
 
                 case 3:
                     controle.chamarAnterior();
-                break;
+                    break;
 
                 case 4:
+                   controle.listarFila();
+                    break;
+
+                case 5:
                     System.out.println("Encerrando o programa...");
-                break;
+                    break;
 
                 default:
                     System.out.println("Digite um valor valido");
-                break;
+                    break;
             }
-        } while (escolha != 4);
+        } while (escolha != 5);
     }
 }
