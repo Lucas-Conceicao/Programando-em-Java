@@ -1,3 +1,19 @@
+/*2- Lista Circular e duplamente encadeada:
+
+Uma clinina medica atende pacientes por ordem de chegada, mas depois de atender o ultimo paciente, volta ao inicio da fila caso hava necessidade de atendimento continuo. É possível voltar e ir entre as senhas navegadas.
+
+Cada paciente deve ter um código e um nome.
+
+O sistema deve conter os métodos:
+
+adicionarPaciente(int senha, String nome)
+
+chamarProximo()
+
+chamarAnterior()
+
+ListarFila()*/
+
 import java.util.Scanner;
 
 class Paciente{
