@@ -1,1 +1,10 @@
+/*HashTables
+3 - Registro de presença em uma aula
+Um professor deseja registrar as presenças de seus alunos usando hashmap.
+A chave é o nome do aluno, e o valor é o numero de presenças que ele possui.
+Os métodos do sistema devem ser:
+registrarPresenca(String nome) da uma presença ao aluno selecionado.
+VerificarPresenca(String nome) Imprime na tela a quantidade de presenças dos alunos.
+ListarPresencas() Mostra todos os alunos e suas presenças.*/
 
+import java.util.Scanner;
