@@ -14,22 +14,6 @@ chamarAnterior()
 
 ListarFila()*/
 
-/*2- Lista Circular e duplamente encadeada:
-
-Uma clinina medica atende pacientes por ordem de chegada, mas depois de atender o ultimo paciente, volta ao inicio da fila caso hava necessidade de atendimento continuo. É possível voltar e ir entre as senhas navegadas.
-
-Cada paciente deve ter um código e um nome.
-
-O sistema deve conter os métodos:
-
-adicionarPaciente(int senha, String nome)
-
-chamarProximo()
-
-chamarAnterior()
-
-ListarFila()*/
-
 import java.util.Scanner;
 
 class Paciente{
@@ -107,20 +91,14 @@ class ControlePacientes{
 public class Main{
     public static void main(String[] args) {
         ControlePacientes controle = new ControlePacientes();
-        int escolha;
         Scanner scanner = new Scanner(System.in);
         int novasenha = 0;
+        int escolha;
 
         do {
-            System.out.println("1 - Adicionar paciente");
-            System.out.println("2 - Chamar próximo paciente");
-            System.out.println("3 - Chamar paciente anterior");
-            System.out.println("4 - listar fila");
-            System.out.println("5 - Sair do programa");
-            System.out.println("Escolha uma das opções: ");
+            Menu();
             escolha = scanner.nextInt();
             scanner.nextLine();
-
             switch (escolha) {
                 case 1:
                     novasenha++;
@@ -141,7 +119,6 @@ public class Main{
                 case 4:
                    controle.listarFila();
                     break;
-
                 case 5:
                     System.out.println("Encerrando o programa...");
                     break;
@@ -151,5 +128,13 @@ public class Main{
                     break;
             }
         } while (escolha != 5);
+    }
+    private static void Menu() {
+        System.out.println("1 - Adicionar paciente");
+        System.out.println("2 - Chamar próximo paciente");
+        System.out.println("3 - Chamar paciente anterior");
+        System.out.println("4 - listar fila");
+        System.out.println("5 - Sair do programa");
+        System.out.println("Escolha uma das opções: ");
     }
 }
