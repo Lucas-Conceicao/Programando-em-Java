@@ -1,1 +1,73 @@
+/*
+ Simulando uma fila de tarefas, onde as pessoas podem acrescentar tarefas novas, executar ou mostrar essas tarefas. 
+ Crie um menu para este programa, permitindo que o usuário faça qualquer uma das ações listadas acima. 
+Implemente adequadamente utilizando os recursos disponíveis para filas
+*/
 
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<String> fila = new LinkedList<>();
+
+        for(;;) { //Laço de repetição infinito;
+            Menu();
+            int escolha = scanner.nextInt();
+            scanner.nextLine();
+
+            switch(escolha) { 
+                case 1: //Adicionando tarefas
+                    System.out.print("Adicionando tarefa à fila... ");
+                    System.out.print("Insira a descricao da tarefa: ");
+                    String descricao = scanner.nextLine();
+                    fila.offer(descricao);
+                    System.out.println("Tarefa " + descricao + " adicionada com sucesso!");
+                break;
+
+             case 2: //Removendo tarefas
+                    if (fila.isEmpty()) {
+                        System.out.println("Não há tarefas pendentes.");
+                    } else {
+                        System.out.println("Realizando tarefa...: ");
+                        System.out.println("Tarefa - " + fila.poll() + " removida da lista");                                        
+                    }
+                break;
+
+            case 3: //Mostrar todas as tarefas da fila
+                if(fila.isEmpty()) {
+                     System.out.println("Não há tarefas na fila.");
+                }
+                else{
+                    System.out.println("Mostrando tarefas da fila: ");
+                    for (String tarefa : fila){
+                        System.out.println(tarefa);
+                    }
+                }
+                break;
+
+            case 4: //Saindo do sistema 
+                scanner.close(); //fecha o scanner 
+                System.out.println("Programa encerrado.");
+                return;
+                    
+            default:
+                System.out.println("Opção inválida!");
+                break;
+            }
+            System.out.println();
+        }
+    }
+
+    private static void Menu() {
+        System.out.println("MENU");
+        System.out.println("1 - Inserir tarefa na fila");
+        System.out.println("2 - Remover tarefa da fila");
+        System.out.println("3 - Mostrar tarefas da fila");
+        System.out.println("4 - Sair do programa");
+        System.out.println();
+        System.out.print("Escolha uma das opções: ");
+    }
+}
