@@ -4,19 +4,22 @@ que o comprador deseja que seja respeitado, busque na lista de prazos o menor pr
 import java.util.Scanner;
 
 public class Main {
+
+    public static int encontrarPrazo(int[] prazos, int prazoCliente) {
+        for(int i = 0; i < prazos.length; i++){
+            if(prazos[i] >= prazoCliente)
+                return prazos[i];
+        }
+        return -1;
+    }
+         
     public static void main(String[] args) {
         int prazos[] = {7, 14, 21, 28, 35};
-        int prazoComprador = 0;
+        int prazoCliente = 0;
         Scanner scanf = new Scanner(System.in);
 
         System.out.println("Digite o prazo minimo do comprador para receber o produto: ");
-        prazoComprador = scanf.nextInt();
-
-        for (int i = 0; i < prazos.length; i++){
-            if (prazoComprador <= prazos[i]) {
-                System.out.println("Prazo " + prazos[i] + " dias");
-                break;
-            }
-        }  
+        prazoCliente = scanf.nextInt();
+        System.out.println("O prazo mínimo para a entrega do produto é de " + encontrarPrazo(prazos, prazoCliente) + " dias.");
     }
 }
