@@ -1,1 +1,22 @@
+/*Implemente uma função que receba um vetor ordenado com prazos de entrega disponiveis para um produto e tambem recebe um prazo em dias 
+que o comprador deseja que seja respeitado, busque na lista de prazos o menor prazo possivel que seja maior ou igual ao prazo que ele solicitou.*/
 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int prazos[] = {7, 14, 21, 28, 35};
+        int prazoComprador = 0;
+        Scanner scanf = new Scanner(System.in);
+
+        System.out.println("Digite o prazo minimo do comprador para receber o produto: ");
+        prazoComprador = scanf.nextInt();
+
+        for (int i = 0; i < prazos.length; i++){
+            if (prazoComprador <= prazos[i]) {
+                System.out.println("Prazo " + prazos[i] + " dias");
+                break;
+            }
+        }  
+    }
+}
