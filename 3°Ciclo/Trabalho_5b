@@ -1,2 +1,71 @@
 /*Aplicar um filtro que mostre a nota em letra ao lado da nota em numero.
 (0 a 20 = f; 21 a 40 = D; 41 a 60 = C; 61 a 80 = B; 81 a 100 = A)*/
+
+/*Crie um projeto que utilize a busca binaria para buscar em um vetor de notas(de 0 a 100) 
+de alunos todos que foram aprovados em uma nota de corte.*/
+import java.util.Scanner;
+
+public class Main {
+    public static int binarySearch(int[] notas, int notaDeCorte) {
+        int min = 0;
+        int max = notas.length - 1;
+
+        while (min <= max) {
+            int mid = min + (max - min) / 2;
+            
+            if (notas[mid] >= notaDeCorte) {
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return min;
+    }
+
+    public static char filtroNotas(int[] notas, int i){
+
+        if(notas[i] < 21)
+            return 'F';
+            
+        else if(notas[i] > 20 && notas[i] < 41)
+            return 'D';
+            
+        else if(notas[i] > 40 && notas[i] < 61)
+            return 'C';
+            
+        else if(notas[i] > 60 && notas[i] < 81)
+            return 'B';
+            
+        else
+            return 'A';
+    }
+
+    public static void main(String[] args) {
+        int[] notas = {7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98};
+        int notaDeCorte;
+        char notaLetra;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite a nota de corte (0 a 100): ");
+        while (true) {
+            notaDeCorte = scanner.nextInt();
+            if (notaDeCorte >= 0 && notaDeCorte <= 100) {
+                break;
+            } else {
+                System.out.println("Nota inválida. Digite uma nota entre 0 e 100: ");
+            }
+        }
+
+        int indicePrimeiroAprovado = binarySearch(notas, notaDeCorte);
+
+        if (indicePrimeiroAprovado < notas.length) {
+            System.out.println("Alunos aprovados com nota maior ou igual a " + notaDeCorte + ":");
+            for (int i = indicePrimeiroAprovado; i < notas.length; i++) {
+                notaLetra = filtroNotas(notas, i);
+                System.out.println("Nota: " + notas[i] + " Nota em Letra: " + notaLetra);
+            }
+        } else {
+            System.out.println("Nenhum aluno aprovado com nota maior ou igual a " + notaDeCorte + ".");
+        }
+    }
+}
