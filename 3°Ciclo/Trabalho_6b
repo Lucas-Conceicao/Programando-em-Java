@@ -1,6 +1,4 @@
-/*Recebendo uma lista desordenada de preços  de um produto, ordene de forma decrescente e apresente na tela.*/
-
-import java.util.Scanner;
+/*Recebendo uma lista desordenada de preços de um produto, ordene de forma decrescente e apresente na tela.*/
 
 public class Main {
 
@@ -26,6 +24,7 @@ public class Main {
         int[] precos = {77, 14, 84, 28, 42, 35, 49, 56, 91, 70, 7, 21, 98, 63};
         int[] precosOrdenados = bubbleSort(precos);
 
-        for(int i = 0; i < precosOrdenados.length - 1; i++)
+        for(int i = 0; i < precosOrdenados.length - 1; i++) 
+            System.out.println(precosOrdenados[i]);
     }
 }
