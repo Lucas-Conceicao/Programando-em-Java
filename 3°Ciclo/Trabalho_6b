@@ -1,4 +1,4 @@
-/*Baseando-se na tarefa 5, aplique uma ordenação de bubble sort para garantir que a lista de precos esteja crescente.*/
+/*Recebendo uma lista desordenada de preços  de um produto, ordene de forma decrescente e apresente na tela.*/
 
 import java.util.Scanner;
 
