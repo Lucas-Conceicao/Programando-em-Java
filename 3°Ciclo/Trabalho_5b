@@ -1,10 +1,6 @@
 /*Aplicar um filtro que mostre a nota em letra ao lado da nota em numero.
 (0 a 20 = f; 21 a 40 = D; 41 a 60 = C; 61 a 80 = B; 81 a 100 = A)*/
 
-/*Crie um projeto que utilize a busca binaria para buscar em um vetor de notas(de 0 a 100) 
-de alunos todos que foram aprovados em uma nota de corte.*/
-import java.util.Scanner;
-
 public class Main {
     public static int binarySearch(int[] notas, int notaDeCorte) {
         int min = 0;
