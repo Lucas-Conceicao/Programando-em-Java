@@ -1,49 +1,47 @@
-/*Elaborar uma forma de, entrando com um vetor de nomes e telefones, de forma desordenada, elaborar uma lista ordenada dessa agenda.
-Pode ser feito usando objetos ou vetores*/
 
-public class Contato{
-    private String nome;
-    private String telefone;
+    class Contato {
+        private String nome;
+        private String telefone;
 
-    public Contato(String nome, String telefone) {
-        this.nome = nome;
-        this.telefone = telefone;
+        public Contato(String nome, String telefone) {
+            this.nome = nome;
+            this.telefone = telefone;
+        }
+
+        public String toString() {
+            return nome + " - " + telefone;
+        }
     }
-    
-    public String toString() {
-        return nome + " - " + telefone;
-    }
-}
 
-public class Main {
+    public class Main {
+        public static Contato[] bubbleSort(Contato[] agenda) {
+            Contato temp;
+            int tamanho = agenda.length;
 
-    public static int[] bubbleSort(Contato[] agenda) {
-        Controle temp;
-        int i = 0;
-        int j = 0;
-        int tamanho = agenda.length;
-
-        for(i = 0; i < tamanho; i++){
-            for(j = 0; j < tamanho - 1 - i; j++){
-                if(agenda[j] < agenda[j + 1]){
-                    aux = precos[j];
-                    agenda[j] = agenda[j+1];
-                    agenda[j+1] = aux;
+            for(int i = 0; i < tamanho; i++) {
+                for(int j = 0; j < tamanho - 1 - i; j++) {
+                    if(agenda[j].toString().compareTo(agenda[j + 1].toString()) > 0) {
+                        temp = agenda[j];
+                        agenda[j] = agenda[j + 1];
+                        agenda[j + 1] = temp;
+                    }
                 }
             }
+            return agenda;
         }
-        return precos;
+
+        public static void main(String[] args) {
+            Contato[] agenda = new Contato[5];
+            agenda[0] = new Contato("Joao", "998877665");
+            agenda[1] = new Contato("Carol", "988877665");
+            agenda[2] = new Contato("Guilherme", "911223344");
+            agenda[3] = new Contato("Lucas", "933445566");
+            agenda[4] = new Contato("Helena", "955667788");
+            Contato[] agendaOrdenada = bubbleSort(agenda);
+
+            System.out.println("Agenda Ordenada:");
+            for(int i = 0; i < agendaOrdenada.length - 1; i++) {
+                System.out.println(agendaOrdenada[i].toString());
+            }
+        }
     }
-
-    public static void main(String[] args) {
-        Contato agenda = new Contato[5];
-        agenda[0] = new Contato("Joao", "998877665");
-        agenda[1] = new Contato("Carol", "988877665");
-        agenda[2] = new Contato("Guilherme", "911223344");
-        agenda[3] = new Contato("Lucas", "933445566");
-        agenda[4] = new Contato("Helena", "955667788");
-        Contato agendaOrdenada[] = bubbleSort(agenda);
-
-    }
-}
-
