@@ -1,1 +1,19 @@
-/*Inverter um String por recursão.*/
+
+public class Main {
+
+    public static void inversao(String palavra, char[] palavrareversa, int i, int j){
+        if(i >= palavra.length() )
+            return;
+        
+        palavrareversa[i] = palavra.charAt(j);
+        inversao(palavra, palavrareversa, i + 1, j - 1);
+    }
+
+    public static void main(String[] args) {
+        String palavra = "papaleguas";
+        char[] palavrareversa = new char[palavra.length()];
+        
+        inversao(palavra, palavrareversa, 0, palavra.length() - 1);
+        System.out.println(palavrareversa);
+        }
+}
