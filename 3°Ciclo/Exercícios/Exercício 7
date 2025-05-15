@@ -1,3 +1,5 @@
+/*Elaborar uma forma de, entrando com um vetores de nome e telefone, de forma desordenada, elaborar uma lista ordenada desta agenda.
+Pode ser feito usando objetos ou vetores.*/
 
     class Contato {
         private String nome;
@@ -40,7 +42,7 @@
             Contato[] agendaOrdenada = bubbleSort(agenda);
 
             System.out.println("Agenda Ordenada:");
-            for(int i = 0; i < agendaOrdenada.length - 1; i++) {
+            for(int i = 0; i < agendaOrdenada.length; i++) {
                 System.out.println(agendaOrdenada[i].toString());
             }
         }
