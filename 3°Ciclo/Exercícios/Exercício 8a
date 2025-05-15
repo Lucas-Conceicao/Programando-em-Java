@@ -1,1 +1,29 @@
 /*Verificar se uma palavra é um palíndromo por recursividade*/
+
+import java.util.Scanner;
+    
+public class Main {
+
+    public static int VerificacaoRecursiva(String palavra, int i, int j){
+        if(i >= j)
+            return 1;
+        
+        if (palavra.charAt(i) == palavra.charAt(j))
+            return VerificacaoRecursiva(palavra, i + 1, j - 1);
+        else
+            return 0;
+    }
+
+    public static void main(String[] args) {
+        String palavra;
+        Scanner scanner = new Scanner(System.in);
+       
+        System.out.println("Digite a palavra que deseja verificar: ");
+        palavra = scanner.nextLine();
+       
+        if (VerificacaoRecursiva(palavra, 0, palavra.length() - 1) == 1)
+            System.out.println("A palavra " + palavra + " é um palíndromo");
+        else
+            System.out.println("A palavra " + palavra + " não é um palíndromo");
+        }
+}
