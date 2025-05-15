@@ -1,1 +1,32 @@
 /*Calcular a potencia de um numero qualquer (passar o numero e o quanto voce quer elevar ele)*/
+
+import java.util.Scanner;
+public class Main {
+
+    public static int potencia(int n, int x, int resultado){
+        if(n == 0)
+            return 1;
+
+        if(n == 1)
+            return resultado;
+            
+        resultado *= x;
+        return potencia(n - 1, x, resultado);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite um numero: ");
+        int x = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.println("Elevado a: ");
+        int n = scanner.nextInt();
+        scanner.nextLine();
+
+        int resultado = x;
+        
+        System.out.println(potencia(n, x, resultado));
+        }
+}
