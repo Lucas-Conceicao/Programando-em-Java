@@ -1,1 +1,21 @@
 /*Contar quantidade de elementos pares em um vetor*/
+public class Main {
+
+    public static int pares(int numeros[], int i){
+        int cont = 0;
+        
+        if(i == numeros.length)
+            return 0;
+        
+        if(numeros[i] % 2 == 0)
+            cont++;
+        
+        return cont + pares(numeros, i + 1);
+    }
+
+    public static void main(String[] args) {
+        int numeros[] = {1 , 2, 3, 4, 5, 6, 7, 8, 9, 10}, cont = 0;
+        cont = pares(numeros, 0);
+        System.out.println(cont);
+        }
+}
