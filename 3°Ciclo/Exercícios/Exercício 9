@@ -1,1 +1,41 @@
+/*Utilizando o exemplo dado para resolução do problema da mochila, aplique a tecnica do memoization para melhorar o 
+desempenho da recursividade.*/
+import java.util.HashMap;
+import java.util.Map;
 
+public class Main {
+    private static Map<Integer, Long> memo = new HashMap<>();
+    public static long knapsack(int capacidade, int[]
+            pesos, int[] valores, int n) {
+        // Caso base: Se não houver itens ou acapacidade da mochila for zero, o valor máximo é zero.
+        if (n == 0 || capacidade == 0) 
+            return 0;
+        
+        if(memo.containsKey(n))
+            return memo.get(n);
+
+        // Se o peso do item atual for maior que a capacidade restante, ele não pode ser incluído.
+        if (pesos[n - 1] > capacidade) {
+            memo.put(n, knapsack(capacidade, pesos, valores, n - 1));
+            return memo.get(n);
+        } else {
+        // Caso contrário, temos duas opções:
+        // 1. Incluir o item atual: Adicionamosseu valor e chamamos a função recursivamente com a capacidade reduzida.
+        // 2. Não incluir o item atual: Chamamos a função recursivamente com o mesmo valor de capacidade.
+        // Retornamos o máximo entre essas duas opções.
+
+            memo.put(n, Math.max(
+                    valores[n - 1] +
+                    knapsack(capacidade - pesos[n - 1], pesos, valores, n - 1),
+                    knapsack(capacidade, pesos, valores, n - 1)));
+            return memo.get(n);
+        }
+    }
+    public static void main(String[] args) {
+        int[] valores = {600, 100, 120};
+        int[] pesos = {10, 20, 30};
+        int capacidade = 50;
+        int n = valores.length;
+        System.out.println("Valor máximo na mochila: " + knapsack(capacidade, pesos, valores, n));
+    }
+}
