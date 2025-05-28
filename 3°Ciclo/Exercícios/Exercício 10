@@ -1,1 +1,2 @@
-
+/*Executar um comparativo de quicksort com bubbleSort, gerar aleatoriamente um vetor de grande tamanho, algo com um Bilhao de 
+numeros aleatorios... Esse vetor deve ser o mesmo na execução do quicksort e do bubbleSort... contabilizar o tempo de execução entre cada um.*/
