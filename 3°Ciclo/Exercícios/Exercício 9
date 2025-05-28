@@ -4,33 +4,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    private static Map<Integer, Long> memo = new HashMap<>();
-    public static long knapsack(int capacidade, int[]
-            pesos, int[] valores, int n) {
-        // Caso base: Se não houver itens ou acapacidade da mochila for zero, o valor máximo é zero.
-        if (n == 0 || capacidade == 0) 
+    private static Map<String, Long> memo = new HashMap<>();
+
+    public static long knapsack(int capacidade, int[] pesos, int[] valores, int n) {
+
+        if (n == 0 || capacidade == 0)
             return 0;
-        
-        if(memo.containsKey(n))
-            return memo.get(n);
 
-        // Se o peso do item atual for maior que a capacidade restante, ele não pode ser incluído.
+        //chave composta pois precisa de 2 parâmetros a capacidade e o n 
+        String key = capacidade + "," + n;
+
+        if (memo.containsKey(key))
+            return memo.get(key);
+
         if (pesos[n - 1] > capacidade) {
-            memo.put(n, knapsack(capacidade, pesos, valores, n - 1));
-            return memo.get(n);
-        } else {
-        // Caso contrário, temos duas opções:
-        // 1. Incluir o item atual: Adicionamosseu valor e chamamos a função recursivamente com a capacidade reduzida.
-        // 2. Não incluir o item atual: Chamamos a função recursivamente com o mesmo valor de capacidade.
-        // Retornamos o máximo entre essas duas opções.
-
-            memo.put(n, Math.max(
-                    valores[n - 1] +
-                    knapsack(capacidade - pesos[n - 1], pesos, valores, n - 1),
-                    knapsack(capacidade, pesos, valores, n - 1)));
-            return memo.get(n);
+            long resultado = knapsack(capacidade, pesos, valores, n - 1);
+            memo.put(key, resultado);
+            return resultado;
+        } 
+        else {
+            long incluir = valores[n - 1] + knapsack(capacidade - pesos[n - 1], pesos, valores, n - 1);
+            long naoIncluir = knapsack(capacidade, pesos, valores, n - 1);
+            long resultado = Math.max(incluir, naoIncluir);
+            memo.put(key, resultado);
+            return resultado;
         }
     }
+
     public static void main(String[] args) {
         int[] valores = {600, 100, 120};
         int[] pesos = {10, 20, 30};
