@@ -16,11 +16,11 @@ public class Main {
             quickSort(arr, indicePivo + 1, fim);
         }
     }
-    
+
     public static int particionar(int[] arr, int inicio, int fim) {
         int pivo = arr[fim];
         int i = (inicio - 1);
-       
+
         for (int j = inicio; j < fim; j++) {
             if (arr[j] <= pivo) {
                 i++; 
@@ -31,38 +31,38 @@ public class Main {
         // Retorna o índice do pivô
         return i + 1;
     }
-    
+
     private static void trocar(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    
+
     public static int buscaBinaria(int[] arr, int codigo) {
         int inicio = 0, fim = arr.length - 1, meio;
-        
+
         while (inicio <= fim) {
             meio = inicio + (fim - inicio) / 2;
-            
+
             if (arr[meio] == codigo) 
                 return meio;
-            
+
             else if (arr[meio] < codigo) 
                 inicio = meio + 1;
-                
+
             else 
                 fim = meio - 1;
         }
         return -1; 
     }
-    
+
     public static void main(String[] args) {
         Map<Integer, String> memo = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        
+
         int[] arr = new int[10];
         String nome;
-        
+
         // Cadastro dos livros
         for(int i = 0; i < 10; i++){
             System.out.println("Insira o codigo do " + (i+1) + "º livro:");
@@ -72,7 +72,12 @@ public class Main {
             nome = scanner.nextLine(); 
             memo.put(arr[i], nome); // atribuindo o código como chave para achar o nome do livro
         }
-        //ordenação pelo código
+        //Não ordenado
+        System.out.println("\nCódigos não ordenados: ");
+        for(int i = 0; i < 10; i++)
+            System.out.println("Código: " + arr[i] + " - Livro: " + memo.get(arr[i]));
+        
+        //Ordenação pelo código
         quickSort(arr, 0, arr.length - 1); 
         System.out.println("\nCódigos ordenados:");
         for(int i = 0; i < 10; i++)
@@ -86,16 +91,15 @@ public class Main {
             resultado = buscaBinaria(arr, codigoBusca);
             if (resultado != -1) 
                 System.out.println("Livro encontrado: " + memo.get(codigoBusca));
-                
+
             else 
                 System.out.println("Livro não encontrado!");
-            
+
             System.out.println("Digite 1 caso queira procurar um outro livro: ");
             resposta = scanner.nextInt();
             scanner.nextLine();
         }while(resposta == 1);
-        
+
         System.out.println("programa encerrado!");
         scanner.close();
     }
-}
