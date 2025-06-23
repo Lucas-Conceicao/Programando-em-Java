@@ -1,0 +1,18 @@
+public class TarefaUrgente {
+    public static void main(String[] args) {
+        Tarefa cabeca = new Tarefa("Pagar contas");
+        cabeca.proxima = new Tarefa("Marcar consulta médica");
+ 
+        Tarefa novaTarefa = new Tarefa("Ligar para o cliente");
+        // Tarefa urgente
+        novaTarefa.proxima = cabeca;
+        cabeca = novaTarefa;
+ 
+        Tarefa atual = cabeca;
+        System.out.println("Tarefas atualizadas:");
+        while (atual != null) {
+            System.out.println("- " + atual.descricao);
+            atual = atual.proxima;
+        }
+    }
+}
