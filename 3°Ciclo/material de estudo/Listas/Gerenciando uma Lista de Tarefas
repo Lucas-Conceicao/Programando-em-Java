@@ -1,0 +1,24 @@
+class Tarefa {
+    String descricao;
+    Tarefa proxima;
+ 
+    public Tarefa(String descricao) {
+        this.descricao = descricao;
+        this.proxima = null;
+    }
+}
+ 
+public class ListaTarefas {
+    public static void main(String[] args) {
+        Tarefa cabeca = new Tarefa("Comprar mantimentos");
+        cabeca.proxima = new Tarefa("Pagar contas");
+        cabeca.proxima.proxima = new Tarefa("Marcar consulta médica");
+ 
+        Tarefa atual = cabeca;
+        System.out.println("Minhas tarefas:");
+        while (atual != null) {
+            System.out.println("- " + atual.descricao);
+            atual = atual.proxima;
+        }
+    }
+}
