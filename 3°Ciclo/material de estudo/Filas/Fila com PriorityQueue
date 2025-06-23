@@ -1,0 +1,21 @@
+import java.util.PriorityQueue;
+import java.util.Queue;
+ 
+public class FilaPriorityQueue {
+ 
+    public static void main(String[] args) {
+ 
+        // Cria uma fila de prioridade (ordena os elementos por ordem natural, neste caso, alfabética)
+        Queue<String> filaPrioridade = new PriorityQueue<>();
+ 
+        // Adiciona elementos à fila
+        filaPrioridade.offer("Banana");
+        filaPrioridade.offer("Maçã");
+        filaPrioridade.offer("Abacaxi");
+ 
+        // Remove e imprime os elementos da fila (ordem de prioridade)
+        while (!filaPrioridade.isEmpty()) {
+            System.out.println(filaPrioridade.poll());
+        }
+    }
+}
