@@ -1,0 +1,16 @@
+public class ConcluirTarefa {
+    public static void main(String[] args) {
+        Tarefa cabeca = new Tarefa("Ligar para o cliente");
+        cabeca.proxima = new Tarefa("Pagar contas");
+        cabeca.proxima.proxima = new Tarefa("Marcar consulta médica");
+ 
+        cabeca = cabeca.proxima; // Remove a primeira tarefa (concluída)
+ 
+        Tarefa atual = cabeca;
+        System.out.println("Tarefas restantes:");
+        while (atual != null) {
+            System.out.println("- " + atual.descricao);
+            atual = atual.proxima;
+        }
+    }
+}
