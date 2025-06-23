@@ -1,0 +1,33 @@
+import java.util.Stack;
+ 
+public class PilhaExemplo {
+ 
+    public static void main(String[] args) {
+        Stack<Integer> pilha = new Stack<>();
+ 
+        // push: adiciona um elemento ao topo
+        pilha.push(10);
+        pilha.push(20);
+        pilha.push(30);
+ 
+ 
+        // peek: retorna o elemento do topo sem removê-lo
+        System.out.println("Topo da pilha: " + pilha.peek()); // Output: 30
+ 
+        // pop: remove e retorna o elemento do topo
+        System.out.println("Elemento removido: " + pilha.pop()); // Output: 30
+ 
+        // size: retorna o tamanho da pilha
+        System.out.println("Tamanho da pilha: " + pilha.size()); // Output: 2
+ 
+        // empty: verifica se a pilha está vazia
+        System.out.println("Pilha vazia? " + pilha.empty()); // Output: false
+ 
+ 
+        // Percorrendo e esvaziando a pilha
+        while (!pilha.empty()) {
+            System.out.println(pilha.pop());
+        }
+ 
+    }
+}
