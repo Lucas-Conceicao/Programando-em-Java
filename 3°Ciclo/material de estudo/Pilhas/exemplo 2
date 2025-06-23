@@ -1,0 +1,27 @@
+//Validando Parênteses
+import java.util.Stack;
+ 
+public class ValidacaoParenteses {
+ 
+    public static boolean validarParenteses(String expressao) {
+        Stack<Character> pilha = new Stack<>();
+        for (char c : expressao.toCharArray()) {
+            if (c == '(') {
+                pilha.push(c);
+            } else if (c == ')') {
+                if (pilha.isEmpty() || pilha.pop() != '(') {
+                    return false;
+                }
+            }
+        }
+        return pilha.isEmpty();
+    }
+ 
+    public static void main(String[] args) {
+          System.out.println(validarParenteses("()")); // true
+          System.out.println(validarParenteses("(())")); // true
+          System.out.println(validarParenteses("(( )")); // false
+          System.out.println(validarParenteses(")(")); // false
+ 
+    }
+}
