@@ -1,0 +1,36 @@
+import java.util.LinkedList;
+import java.util.Queue;
+ 
+public class FilaLinkedList {
+ 
+    public static void main(String[] args) {
+ 
+        // Cria uma fila usando LinkedList
+        Queue<String> fila = new LinkedList<>();
+ 
+        // Adiciona elementos à fila
+        fila.offer("João"); // offer retorna false se a fila estiver cheia (capacidade limitada) - add lança exceção
+        fila.offer("Maria");
+        fila.offer("Pedro");
+ 
+        // Imprime o tamanho da fila
+        System.out.println("Tamanho da fila: " + fila.size());
+ 
+        // Remove e imprime o primeiro elemento da fila (FIFO)
+        System.out.println("Primeiro elemento: " + fila.poll()); // poll retorna null se a fila estiver vazia - remove lança exceção
+ 
+         // Visualiza o primeiro elemento sem remover
+        System.out.println("Primeiro elemento (sem remover): " + fila.peek()); // peek retorna null se a fila estiver vazia - element lança exceção
+ 
+ 
+        // Imprime os elementos restantes na fila
+        while (!fila.isEmpty()) {
+            System.out.println(fila.poll());
+        }
+ 
+        System.out.println("Tamanho da fila após remover todos os elementos: " + fila.size());
+ 
+ 
+ 
+    }
+}
