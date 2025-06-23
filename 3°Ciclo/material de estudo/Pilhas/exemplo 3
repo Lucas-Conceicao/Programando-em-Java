@@ -1,0 +1,26 @@
+//Convertendo Decimal para Binário
+import java.util.Stack;
+ 
+public class DecimalParaBinario {
+ 
+    public static String converterParaBinario(int decimal) {
+        Stack<Integer> pilha = new Stack<>();
+ 
+        while (decimal > 0) {
+            pilha.push(decimal % 2);
+            decimal /= 2;
+        }
+ 
+        StringBuilder binario = new StringBuilder();
+        while (!pilha.isEmpty()) {
+            binario.append(pilha.pop());
+        }
+        return binario.toString();
+    }
+ 
+    public static void main(String[] args) {
+        System.out.println(converterParaBinario(10)); // 1010
+        System.out.println(converterParaBinario(25)); // 11001
+        System.out.println(converterParaBinario(0)); // "" - string vazia para o caso 0.
+    }
+}
