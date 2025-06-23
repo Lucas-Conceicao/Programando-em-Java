@@ -1,4 +1,3 @@
-//Convertendo Decimal para Binário
 import java.util.Stack;
  
 public class DecimalParaBinario {
