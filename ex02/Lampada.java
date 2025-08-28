@@ -1,32 +1,31 @@
-public class lampada{
-    Estado estado;
+package org.fatec.ex02;
 
-    public lampada(Estado estado){
+public class Lampada{
+    Estado estado;
+    int qtdAcendimentos = 0;
+
+    public Lampada(Estado estado){
         this.estado = estado;
     }
 
     public void click(){
-        if (this.estado == Estado.ON)
-            this.estado = Estado.OFF;
-        else
-            this.estado = Estado.ON;
-
-        qtdAcendimentos();
+        switch(this.estado){
+            case OFF -> {
+                this.estado = Estado.ON;
+                qtdAcendimentos();
+            }
+            case ON -> this.estado = Estado.OFF;
+        }
     }
 
-    ?public void qtdAcendimentos(){
-        int qtdAcendimentos++;
+    public void qtdAcendimentos( ){
+        qtdAcendimentos++;
     }
 
     public void checaEstado(){
-        switch(lampada.estado){
-            case off:
-                system.out.println("A lâmpada está desligada.");
-            break;
-            case on:
-                system.out.println("A lâmpada está ligada.");
-            break;
+        switch(this.estado){
+            case OFF -> System.out.println("A lâmpada está desligada.");
+            case ON -> System.out.println("A lâmpada está ligada.");
         }
-
     }
 }
