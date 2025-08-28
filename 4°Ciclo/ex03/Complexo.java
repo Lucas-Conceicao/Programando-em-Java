@@ -1,4 +1,4 @@
-package ex04;
+package ex03;
 
 public class Complexo {
     Double real;
