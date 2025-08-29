@@ -7,9 +7,17 @@ public class Main {
         Complexo soma = a.soma(b);
         Complexo multiplica = a.multiplica(b);
 
-        System.out.println("Resultado da soma dos números: " + soma);
-        System.out.println("Resultado da multiplicacao dos números: " + multiplica);
         System.out.println("Módulo de " + a + ": "+ a.modulo());
+        System.out.println("Argumento principal de " + a + ": "+ a.argumentoPrincipal());
         System.out.println("Módulo de " + b + ": "+ b.modulo());
+        System.out.println("Argumento principal de " + b + ": "+ b.argumentoPrincipal());
+
+        System.out.println("Resultado da soma dos números: " + soma);
+        System.out.println("Módulo de " + soma + ": "+ soma.modulo());
+        System.out.println("Argumento principal de " + soma + ": "+ soma.argumentoPrincipal());
+
+        System.out.println("Resultado da multiplicacao dos números: " + multiplica);
+        System.out.println("Módulo de " + multiplica + ": "+ multiplica.modulo());
+        System.out.println("Argumento principal de " + multiplica + ": "+ multiplica.argumentoPrincipal());
     }
 }

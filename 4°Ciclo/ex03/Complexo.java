@@ -17,21 +17,24 @@ public class Complexo {
 
     public Complexo multiplica(Complexo outro){
         Double mReal = (this.real * outro.real) - (this.imaginario * outro.imaginario);
-        Double mImaginario = (this.real * outro.imaginario) - (this.imaginario * outro.real);
+        Double mImaginario = (this.real * outro.imaginario) + (this.imaginario * outro.real);
         return new Complexo(mReal,mImaginario);
     }
 
     public String toString(){
-        return real + " + " + imaginario + "i";
+        if(imaginario >= 0)
+            return real + " + " + imaginario + "i";
+        else
+            return real + " - " + (-imaginario) + "i"; //faciliar vizualização
     }
 
-    public Double modulo( ){
+    public Double modulo(){
         Double modulo = Math.sqrt((this.real * this.real) + (this.imaginario * this.imaginario));
         return modulo;
     }
 
-    /*public Double argumentoPrincipal (){
-        Double angulo = 
-
-    }*/
+    public Double argumentoPrincipal (){
+        Double anguloEmRadianos = Math.atan2(this.imaginario, this.real);
+        return Math.toDegrees(anguloEmRadianos);
+    }
 }
